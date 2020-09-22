@@ -1,0 +1,8 @@
+Package: test-addon
+Priority: extra
+Section: checkinstall
+Maintainer: Scott Shambarger <devel@shambarger.net>
+Architecture: armel
+Version: 1.0-2
+Description: Test Addon for ReadyNAS
+ Just a test

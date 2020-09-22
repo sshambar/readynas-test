@@ -1,0 +1,29 @@
+#!/bin/bash
+
+LOG=/tmp/test-addon.status
+
+set -e
+
+backup_file() {
+  file=$1
+  [ ! -h $file ] || return 0
+  # backup original smbd
+  [ -f $file -a ! -f ${file}.orig ] && cp -a $file ${file}.orig || :
+}
+
+backup_file /usr/sbin/mytest
+
+# DISABLE_ACTIVATION skips symlink/restart on install
+if [ -z "$DISABLE_ACTIVATION" ]; then
+
+  # create symlink
+  rm -f /usr/sbin/mytest
+  ln -s /usr/local/sbin/mytest /usr/sbin/mytest
+
+  # restart server if running
+  echo "$(date): postinst: restart" >> "$LOG"
+  chmod a+w "$LOG"
+  /usr/sbin/mytest
+fi
+
+exit 0
