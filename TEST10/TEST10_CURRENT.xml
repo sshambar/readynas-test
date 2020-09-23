@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <addon>
   <version>1.0-2</version>
-  <download_url>https://github.com/sshambar/readynas-test/releases/download/test-addon/TEST10_1.0-2.bin</download_url>
+  <download_url>https://github.com/sshambar/readynas-test/releases/download/TEST10-1.0-2/Test10_1.0-2.bin</download_url>
   <message>
     <en-us>
       <![CDATA[Updated release.]]>
