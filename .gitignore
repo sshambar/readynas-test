@@ -14,8 +14,10 @@
 .git-module-status
 
 # project related ignores
-/test-addon/usr/
-/TEST10/Test10_*.bin
-/TEST10/files/tmp/
-/TEST10/files/etc/frontview/addons/
-/TEST10/files/etc/frontview/apache/
+*.tgz
+*.bin
+/test-addon/usr/**
+/TEST10/files/tmp/*
+/TEST10/files/etc/frontview/addons/bin/TEST10/*
+/TEST10/files/etc/frontview/addons/ui/TEST10/*
+/TEST10/files/etc/frontview/apache/addons/*

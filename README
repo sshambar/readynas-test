@@ -1,0 +1,6 @@
+
+Make sure ReadyNAS addons_sdk/bin is in PATH.
+
+To build ReadyNAS addon-on:
+
+make

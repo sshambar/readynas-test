@@ -1,0 +1,6 @@
+#!/bin/bash
+
+LOG=/tmp/test-addon.status
+
+echo "$(date): mytest: running" >> "$LOG"
+chmod a+w "$LOG"
