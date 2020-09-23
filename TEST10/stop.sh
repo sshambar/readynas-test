@@ -6,6 +6,8 @@ set -e
 
 LOG=/tmp/test-addon.status
 
+SERVICE=TEST10
+
 RESTART=
 STOP=
 
@@ -21,7 +23,11 @@ remove_symlink() {
   return 0
 }
 
-remove_symlink /usr/local/sbin/mytest /usr/sbin/mytest
+ENABLED=$(grep "^${SERVICE}=" /etc/default/services | sed "s/^${SERVICE}=//")
+[ -z "$ENABLED" ] && ENABLED=0 || :
+
+# only remove symlink if we're disabled
+[ "$ENABLED" = 1 ] || remove_symlink /usr/local/sbin/mytest /usr/sbin/mytest
 
 # restart if changes
 if [ -n "$RESTART" ]; then

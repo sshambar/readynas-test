@@ -53,6 +53,7 @@ sub Show_TEST10_xml
   # check if service is running or not 
   my $enabled = GetServiceStatus("TEST10");
 
+  # get TEST10_FEATURE1 parameter from /etc/default_services
   my $feature1 = GetValueFromServiceFile("TEST10_FEATURE1");
 
   # default (NOT_FOUND) for feature1 is 1

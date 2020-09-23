@@ -13,6 +13,9 @@ PROG_FILES="/etc/frontview/apache/addons/${SERVICE}.conf* \
 echo "$(date): remove.sh: id=$(id -u) started" >> "$LOG"
 chmod a+w "$LOG"
 
+# Remove entries from services file
+sed -i "/^${SERVICE}[_=]/d" /etc/default/services
+
 # Stop service from running
 eval `awk -F'!!' "/^${SERVICE}\!\!/ { print \\$5 }" $ADDON_HOME/addons.conf`
 
@@ -25,7 +28,7 @@ if ! [ "$1" = "-upgrade" ]; then
   fi
   echo "$(date): remove.sh: removing $PACKAGE (not upgrade)" >> "$LOG"
   # dpkg remove will restore original binaries, restart server
-  dpkg -r $PACKAGE
+  dpkg -r $PACKAGE >/dev/null
 fi
 
 if [ "$PROG_FILES" != "" ]; then
@@ -33,9 +36,6 @@ if [ "$PROG_FILES" != "" ]; then
     rm -rf $i
   done
 fi
-
-# Remove entries from services file
-sed -i "/^${SERVICE}[_=]/d" /etc/default/services
 
 # Remove entry from addons.conf file
 sed -i "/^${SERVICE}\!\!/d" $ADDON_HOME/addons.conf

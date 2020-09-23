@@ -97,17 +97,13 @@ self.TEST10_apply = function()
 
    var page_changed = false;
    var set_url = NasState.otherAddOnHash['TEST10'].DisplayAtom.set_url;
-   var feature1 = document.getElementById('TEST10_FEATURE1');
-   if (feature1)
+   var id_array = new Array ('TEST10_FEATURE1');
+   for (var ix = 0; ix < id_array.length ; ix ++)
    {
-     var id_array = new Array ('TEST10_FEATURE1');
-     for (var ix = 0; ix < id_array.length ; ix ++)
+     if (  NasState.otherAddOnHash['TEST10'].DisplayAtom.fieldHash[id_array[ix]].modified )
      {
-       if (  NasState.otherAddOnHash['TEST10'].DisplayAtom.fieldHash[id_array[ix]].modified )
-       {
-          page_changed = true;
-          break;
-       }
+        page_changed = true;
+        break;
      }
    }
    var enabled = document.getElementById('CHECKBOX_TEST10_ENABLED').checked ? 'checked' :  'unchecked';
@@ -189,5 +185,3 @@ self.TEST10_handle_apply_response = function()
     httpAsyncRequestObject = null;
   }
 }
-
-
