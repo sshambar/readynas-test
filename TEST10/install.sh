@@ -88,6 +88,9 @@ friendly_name=`awk -F'!!' '{ print $2 }' $orig_dir/addons.conf`
 # Remove the installation files
 cleanup
 
+# allow apache to settle
+sleep 3
+
 echo "$(date): install.sh: done" >> "$LOG"
 
 exit 0

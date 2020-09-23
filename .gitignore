@@ -1,0 +1,21 @@
+# vim related ignores
+*.swp
+.lvimrc
+
+# emacs related ignores
+*#*#
+*.#*#
+.#*
+*~
+
+# git related ignores
+*.rej
+*.orig
+.git-module-status
+
+# project related ignores
+/test-addon/usr/
+/TEST10/Test10_*.bin
+/TEST10/files/tmp/
+/TEST10/files/etc/frontview/addons/
+/TEST10/files/etc/frontview/apache/
